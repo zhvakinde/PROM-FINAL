@@ -1,0 +1,14 @@
+distrib1:
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+
+distrib2:
+  - docker-ce
+  - docker-ce-cli 
+  - containerd.io
+  - docker-compose-plugin
+
+
+

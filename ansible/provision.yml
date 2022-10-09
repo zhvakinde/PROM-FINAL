@@ -1,0 +1,23 @@
+- name: install docker
+  hosts: all
+  become: true
+  gather_facts: yes
+  roles:
+ #   - dep
+
+- name: Deploy node1
+  hosts: node1
+  become: true
+  gather_facts: yes
+  roles:
+ #   - node1
+
+- name: Deploy prometheus
+  hosts: prometheus
+  become: true
+  gather_facts: yes
+  roles:
+    - prometheus
+
+   
+    

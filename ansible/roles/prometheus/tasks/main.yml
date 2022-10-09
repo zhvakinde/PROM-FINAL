@@ -1,0 +1,25 @@
+
+- name: create monitor directory
+  file: 
+    name: /opt/monitor
+    state: directory
+
+- name: Copy config
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+     - { src: 'docker-compose.yml', dest: '/opt/monitor/docker-compose.yml'}
+     - { src: 'prometheus.yml', dest: '/opt/monitor/prometheus.yml'}
+     - { src: 'datasource.yaml', dest: '/opt/monitor/datasource.yaml'}
+
+- name: config hosts
+  template:
+    src: env.j2
+    dest: /opt/monitor/.env
+
+
+- name: Run containers
+  shell:
+    cmd: "docker compose up -d"
+    chdir: /opt/monitor

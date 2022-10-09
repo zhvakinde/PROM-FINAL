@@ -1,0 +1,72 @@
+version: '3'
+services:
+  db:
+    image: mariadb:10.6.4-focal
+    container_name: db
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=somewordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    expose:
+      - 3306
+      - 33060
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    volumes:
+      - wp_data:/var/www/html
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+
+  mysqld-exporter:
+    image: prom/mysqld-exporter
+    container_name: mysql-exporter
+    environment:
+      - DATA_SOURCE_NAME=wordpress:wordpress@(db:3306)/
+    ports:
+      - 9104:9104
+    links:
+      - db
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+    - 8080:8080
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+
+  node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    container_name: exporter
+    hostname: exporter
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --collector.filesystem.ignored-mount-points
+      - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
+    ports:
+      - 9100:9100
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  wp_data:

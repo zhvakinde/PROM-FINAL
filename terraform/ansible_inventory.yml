@@ -1,0 +1,9 @@
+
+all:
+  children:
+    app:
+      hosts:
+        node1:
+          ansible_host: 158.160.13.22
+        prometheus:
+          ansible_host: 158.160.0.216
