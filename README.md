@@ -16,6 +16,7 @@ http://158.160.13.22:9100/metrics
 http://158.160.0.216:9090/targets?search=
 
 #### Crafana
-http://158.160.0.216:3000/
+http://158.160.0.216:3000/ 
+
 login admin pass admin
 
