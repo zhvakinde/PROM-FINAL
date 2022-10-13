@@ -1,0 +1,13 @@
+ts=2022-10-13T14:05:34.952Z caller=mysqld_exporter.go:277 level=info msg="Starting mysqld_exporter" version="(version=0.14.0, branch=HEAD, revision=ca1b9af82a471c849c529eb8aadb1aac73e7b68c)"
+ts=2022-10-13T14:05:34.953Z caller=mysqld_exporter.go:278 level=info msg="Build context" (gogo1.17.8,userroot@401d370ca42e,date20220304-16:25:15)=(MISSING)
+ts=2022-10-13T14:05:34.953Z caller=mysqld_exporter.go:293 level=info msg="Scraper enabled" scraper=slave_status
+ts=2022-10-13T14:05:34.953Z caller=mysqld_exporter.go:293 level=info msg="Scraper enabled" scraper=global_status
+ts=2022-10-13T14:05:34.953Z caller=mysqld_exporter.go:293 level=info msg="Scraper enabled" scraper=global_variables
+ts=2022-10-13T14:05:34.953Z caller=mysqld_exporter.go:293 level=info msg="Scraper enabled" scraper=info_schema.innodb_cmp
+ts=2022-10-13T14:05:34.953Z caller=mysqld_exporter.go:293 level=info msg="Scraper enabled" scraper=info_schema.innodb_cmpmem
+ts=2022-10-13T14:05:34.953Z caller=mysqld_exporter.go:293 level=info msg="Scraper enabled" scraper=info_schema.query_response_time
+ts=2022-10-13T14:05:34.953Z caller=mysqld_exporter.go:303 level=info msg="Listening on address" address=:9104
+ts=2022-10-13T14:05:34.953Z caller=tls_config.go:195 level=info msg="TLS is disabled." http2=false
+ts=2022-10-13T14:05:45.678Z caller=exporter.go:174 level=error msg="Error from scraper" scraper=info_schema.innodb_cmpmem err="Error 1227: Access denied; you need (at least one of) the PROCESS privilege(s) for this operation"
+ts=2022-10-13T14:05:45.678Z caller=exporter.go:174 level=error msg="Error from scraper" scraper=info_schema.innodb_cmp err="Error 1227: Access denied; you need (at least one of) the PROCESS privilege(s) for this operation"
+ts=2022-10-13T14:05:45.678Z caller=exporter.go:174 level=error msg="Error from scraper" scraper=slave_status err="Error 1227: Access denied; you need (at least one of) the SUPER, SLAVE MONITOR privilege(s) for this operation"
