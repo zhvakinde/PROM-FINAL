@@ -20,3 +20,9 @@ http://158.160.0.216:3000/
 
 login admin pass admin
 
+### Скриншоты
+![1](cadvisor.jpg)
+
+![2](mysql.jpg)
+
+![3](node.jpg)
