@@ -1,5 +1,12 @@
 # PROM-FINAL
 
+### ssh
+```
+158.160.13.22
+158.160.0.216
+user rebrain
+rebrain_ssh_key
+```
 ### Wordpress
 http://158.160.13.22/
 
