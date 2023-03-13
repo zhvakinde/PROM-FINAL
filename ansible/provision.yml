@@ -3,14 +3,14 @@
   become: true
   gather_facts: yes
   roles:
- #   - dep
+    - dep
 
 - name: Deploy node1
   hosts: node1
   become: true
   gather_facts: yes
   roles:
- #   - node1
+    - node1
 
 - name: Deploy prometheus
   hosts: prometheus
